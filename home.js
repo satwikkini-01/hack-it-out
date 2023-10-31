@@ -79,13 +79,13 @@ const map = L.map('map', {
 });
 
 function setInitialView() {
-    map.setView([30, 10], 2);
+    map.setView([30, 10], 3);
     const boundsLargeScreen = L.latLngBounds(
         L.latLng(-90, -180),
         L.latLng(90, 180)
     );
     map.setMaxBounds(boundsLargeScreen);
-    map.options.minZoom = 2;
+    map.options.minZoom = 3;
 }
 
 

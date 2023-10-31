@@ -1,20 +1,24 @@
-mapboxgl.accessToken = config.MAPBOX_API_KEY;
+var userLatitude;
+var userLongitude;
+
 async function getNearbyHospitals(latitude, longitude) {
+    // Use OpenStreetMap Overpass API to fetch nearby hospitals
     const overpassBaseUrl = 'https://overpass-api.de/api/interpreter';
     const overpassQuery = `[out:json][timeout:25];
-        (
-          node["amenity"="hospital"](around:1000,${latitude},${longitude});
-          way["amenity"="hospital"](around:1000,${latitude},${longitude});
-          relation["amenity"="hospital"](around:1000,${latitude},${longitude});
-        );
-        out center;`;
+      (
+        node["amenity"="hospital"](around:2000,${latitude},${longitude});
+        way["amenity"="hospital"](around:2000,${latitude},${longitude});
+        relation["amenity"="hospital"](around:2000,${latitude},${longitude});
+      );
+      out center;`;
 
     const apiUrl = overpassBaseUrl + '?data=' + encodeURIComponent(overpassQuery);
 
     try {
         const response = await fetch(apiUrl);
         const data = await response.json();
-        return data.elements;
+        console.log(data.elements);
+        return data.elements; // Returns the list of hospitals
     } catch (error) {
         console.error('Error fetching nearby hospitals:', error);
         return null;
@@ -22,45 +26,63 @@ async function getNearbyHospitals(latitude, longitude) {
 }
 
 function plotHospitalsOnMap(hospitals) {
-    mapboxgl.accessToken = config.MAPBOX_API_KEY;
+    const map = L.map('map', {zoomControl: false}).setView([userLatitude, userLongitude], 15);
 
-    const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [hospitals[0].lon, hospitals[0].lat],
-        zoom: 15, // Adjust the zoom level
-    });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        maxZoom: 18,
+        minZoom: 3,
+        attribution: 'Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-    // Add markers for hospitals
+    const boundsLargeScreen = L.latLngBounds(
+        L.latLng(-90, -180),
+        L.latLng(90, 180)
+    );
+    map.setMaxBounds(boundsLargeScreen);
+
+    const marker = L.marker([userLatitude, userLongitude]).addTo(map);
+    marker.bindPopup('Your Location', { direction: 'top' });
+
+        marker.on('mouseover', function () {
+            marker.openPopup();
+        });
+
+        marker.on('mouseout', function () {
+            marker.closePopup();
+        });
+    marker._icon.classList.add('red-marker');
+
     hospitals.forEach(hospital => {
-        const marker = new mapboxgl.Marker()
-            .setLngLat([hospital.lon, hospital.lat])
-            .addTo(map);
+        const marker = L.marker([hospital.lat, hospital.lon]).addTo(map);
 
-        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-            `<a href="https://www.google.com/maps/search/?api=1&query=${hospital.lat},${hospital.lon}" target="_blank">Hospital Location</a>`
-        );
+        marker.bindPopup(hospital.tags.name || 'Unnamed Hospital', { direction: 'top' });
 
-        // Add a popup to the marker
-        marker.setPopup(popup);
+        marker.on('mouseover', function () {
+            marker.openPopup();
+        });
+
+        marker.on('mouseout', function () {
+            marker.closePopup();
+        });
+
+        marker.on('click', function () {
+            const url = `https://www.google.com/maps/search/?api=1&query=${hospital.tags.name}`;
+            window.open(url, '_blank');
+        });
     });
 }
 
 function getUserLocationAndFindHospitals() {
-    // Get the user's current location (latitude and longitude)
     navigator.geolocation.getCurrentPosition(async (position) => {
-        const userLatitude = position.coords.latitude;
-        const userLongitude = position.coords.longitude;
+        userLatitude = position.coords.latitude;
+        userLongitude = position.coords.longitude;
 
-        // Get nearby hospitals based on the user's location
         const nearbyHospitals = await getNearbyHospitals(userLatitude, userLongitude);
 
-        // Plot nearby hospitals on the map
         plotHospitalsOnMap(nearbyHospitals);
     }, (error) => {
         console.error('Error getting user location:', error);
     });
 }
 
-// Call the function to get user location and find nearby hospitals
 getUserLocationAndFindHospitals();

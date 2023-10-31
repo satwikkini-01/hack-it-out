@@ -2,17 +2,72 @@
 <html>
 
 <head>
-    <title>Mapbox Nearby Hospitals</title>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+    <title>Nearby Hospitals</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="healthcare.css">
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+        <a class="navbar-brand" href="home.html">NameDecide</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">HealthCare</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Predictions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Manual</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-button" href="#">LogIn</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div id='map'></div>
+
+    <div class="legend">
+        <table class="table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col" class="th1">Colour</th>
+                    <th scope="col" class="th2">Indicator</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="legendimage">
+                        <div class="colourbox" style="background-color: rgb(222, 84, 74);"></div>
+                    </td>
+                    <td class="legendtext">Your current location</td>
+                </tr>
+                <tr>
+                    <td class="legendimage">
+                        <div class="colourbox" style="background-color: rgb(38, 126, 203);"></div>
+                    </td>
+                    <td class="legendtext">Hospitals near you</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <script type='text/javascript' src='config.js'></script>
     <script src="healthcare.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

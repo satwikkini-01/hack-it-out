@@ -3,6 +3,8 @@
 
 <head>
     <title>Name decide maadroo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="styles.css">
@@ -11,7 +13,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
-        <a class="navbar-brand" href="#">YourSiteName</a>
+        <a class="navbar-brand" href="#">NameDecide</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,8 +38,60 @@
 
     <div id="map"></div>
 
+    <div class="legend">
+        <table class="table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col" class="th1">Colour</th>
+                    <th scope="col" class="th2">Disaster Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="legendimage">
+                        <div class="colourbox" style="background-color: rgb(222, 84, 74);"></div>
+                    </td>
+                    <td class="legendtext">Earthquake</td>
+                </tr>
+                <tr>
+                    <td class="legendimage">
+                        <div class="colourbox" style="background-color: rgb(38, 126, 203);"></div>
+                    </td>
+                    <td class="legendtext">Severe Storms</td>
+                </tr>
+                <tr>
+                    <td class="legendimage">
+                        <div class="colourbox" style="background-color: rgb(77, 77, 77);"></div>
+                    </td>
+                    <td class="legendtext">Volcano Eruptions</td>
+                </tr>
+                <tr>
+                    <td class="legendimage">
+                        <div class="colourbox" style="background-color: rgb(68, 133, 0);"></div>
+                    </td>
+                    <td class="legendtext">Forest Fires</td>
+                </tr>
+                <tr>
+                    <td class="legendimage">
+                        <div class="colourbox" style="background-color: rgb(203, 80, 189);"></div>
+                    </td>
+                    <td class="legendtext">Sea and Lake Ice</td>
+                </tr>
+                <tr>
+                    <td class="legendimage">
+                        <div class="colourbox" style="background-color: rgb(1, 150, 93);"></div>
+                    </td>
+                    <td class="legendtext">Others</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="home.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 </body>

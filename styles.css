@@ -10,6 +10,7 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
 .navbar-custom {
@@ -98,6 +99,104 @@ html {
     filter: saturate(0) contrast(3);
 }
 
-.orange-marker {
+.green-marker {
     filter: hue-rotate(240deg);
+}
+
+.purple-marker {
+    filter: hue-rotate(90deg);
+}
+
+.default-marker {
+    filter: hue-rotate(300deg);
+}
+
+.legend {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.colourbox {
+    height: 35px;
+    width: 50px;
+    border-radius: 5px;
+}
+
+.table-borderless {
+    background-color: var(--main1);
+    margin: 0;
+    border-radius: 20px;
+    border-collapse: collapse;
+    border: none;
+}
+
+td, th{
+    padding: 0.5rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+.th1{
+    background-color: var(--main2);
+    color: var(--main1);
+    border-radius: 10px 0 0 0;
+}
+
+.th2{
+    background-color: var(--main2);
+    color: var(--main1);
+    border-radius: 0 10px 0 0;
+}
+
+@media only screen and (max-width: 576px) {
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-toggler-icon {
+        color: var(--main2);
+    }
+
+    .navbar-custom {
+        padding: 1rem;
+    }
+
+    .legend {
+        font-size: 0.7rem;
+        padding: 0;
+    }
+
+    .colourbox {
+        height: 15px;
+        width: 20px;
+        padding: 0;
+        margin: 0.3rem;
+    }
+
+    .legend tr {
+        padding: 0;
+        margin: 0;
+    }
+
+    .legend td {
+        padding: 0.2rem;
+        margin: 0.2rem;
+    }
+
+    .legend th {
+        padding: 0.2rem;
+        margin: 0;
+    }
+
+    .leaflet-marker-icon{
+        width: 10px;
+        height: 10px;
+    }
 }

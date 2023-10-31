@@ -66,8 +66,8 @@ header p {
 
 .nav-pred {
     color: var(--main2);
-    font-size: 1.2rem;
-    margin: 0 -1rem;
+    font-size: 1.3rem;
+    margin: 0 1rem;
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
     font-weight: 450;
     position: relative;
@@ -250,4 +250,8 @@ ul li a:hover{
 
 ul li:hover ul.dropdown{
     display: block;
+}
+
+.dropdown{
+    background-color: var(--main1);
 }

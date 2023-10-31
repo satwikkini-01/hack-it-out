@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flood Prediction</title>
+    <link rel="stylesheet" href="predictionscss.css">
+</head>
+
+<body>
+    <header>
+        <h1>Flood Prediction</h1>
+        <p>Enter the rainfall (in cm) to get flood predictions.</p>
+    </header>
+
+    <section id="input-section">
+        <div class="input-group">
+            <label for="location-input">Enter Rainfall (in cm):</label>
+            <input type="text" id="rainfall-input" placeholder="Rainfall">
+        </div>
+        <button id="predict-button">Predict</button>
+    </section>
+
+    <section id="prediction-results">
+        <div class="result-box">
+            <h2>Prediction Results</h2>
+            <p><strong>Predicted Flood Probability:</strong> <span id="probability">-</span></p>
+            <p><strong>Location:</strong> <span id="location">-</span></p>
+            <p><strong>Description:</strong> <span id="description">-</span></p>
+        </div>
+    </section>
+    
+
+    <div id="map"></div>
+
+    <script>
+        // Your JavaScript code for fetching predictions and displaying them on the page
+        // You will need to integrate your machine learning model and API here
+        
+        let address;
+        function getUserLocationAndFindHospitals() {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            userLatitude = position.coords.latitude;
+            userLongitude = position.coords.longitude;
+            const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${userLatitude}&lon=${userLongitude}`;
+            fetch(apiUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.display_name) {
+                address = data.display_name;
+                console.log('Location:', address);
+                } else {
+                console.error('Location not found');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }, (error) => {
+            console.error('Error getting user location:', error);
+        });
+        
+    }
+    getUserLocationAndFindHospitals();
+    const locationjs = document.getElementById("location")
+        const predict = document.getElementById("predict-button")
+        predict.addEventListener("click",function(){
+            const loc = address;
+            locationjs.textContent = loc;
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 :root {
     --main1: #fbf9f2;
     --main2: #0093AA;
@@ -7,10 +9,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
 body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
+    background-color: var(--main1);
 }
 
 header {
@@ -18,73 +24,146 @@ header {
     background-color: var(--main2);
     color: var(--main1);
     padding: 1rem;
+    padding-top: 125px;
 }
 
 header h1 {
     font-size: 2rem;
+    font-family: 'Bakbak One', Arial, Helvetica, sans-serif;
     margin-bottom: 0.5rem;
 }
 
 header p {
-    font-size: 1rem;
+    font-size: 1.3rem;
+}
+
+.navbar-custom {
+    background-color: var(--main1);
+    padding: 1.5rem 3rem;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    color: var(--main2);
+    font-size: 1.7rem;
+    font-family: 'Bakbak One', Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--main2);
+    scale: 1.1;
+}
+
+.nav-link {
+    color: var(--main2);
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--main2);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover:after {
+    transform: scaleX(1);
+}
+
+
+.nav-button {
+    background-color: var(--main2);
+    color: var(--main1);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    color: var(--main1);
+    scale: 1.1;
+}
+
+.nav-button:after {
+    background-color: var(--main2);
+    color: var(--main1);
+}
+
+.nav-button:hover:after {
+    transform: scaleX(0);
+    color: var(--main1);
 }
 
 #input-section {
     text-align: center;
     margin: 2rem auto;
+    background-color: var(--main1);
 }
 
 .input-group {
     text-align: center;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: #f0f0f0;
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: var(--main1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 label {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin: 0.5rem;
+}
+
+.input-group input{
+    border-radius: 10px;
 }
 
 #location-input {
-    width: 70%;
+    width: 30%;
+    min-width: 250px;
     padding: 0.5rem;
     font-size: 1rem;
 }
 
 #predict-button {
+    font-family: 'Bakbak One', Arial, Helvetica, sans-serif;
     background-color: var(--main2);
     color: var(--main1);
     padding: 1rem 2rem;
     border: none;
-    font-size: 1rem;
+    font-size: 1.3rem;
     cursor: pointer;
-    margin-top: 1rem;
     border-radius: 10px;
-    transition: transform 0.2s, background-color 0.3s;
+    transition: all 0.3s ease;
 }
 
 #predict-button:hover {
-    background-color: #007e96;
-    transform: translateY(-3px);
+    transform: scale(1.1);
 }
 
-#predict-button:active {
-    background-color: #005b6c;
-    transform: translateY(0);
+#predict-button:after {
+    transform: scale(0);
 }
-
 
 .result-box {
     text-align: left;
-    background-color: #f0f0f0;
+    background-color: #fff;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
     margin: 2rem auto;
-    max-width: 500px; 
+    max-width: 500px;
 }
 
 .result-box h2 {
@@ -97,13 +176,6 @@ label {
     margin: 0.5rem 0;
 }
 
-
-#map {
-    width: 100%;
-    height: 300px;
-}
-
-
 @media only screen and (max-width: 576px) {
     header h1 {
         font-size: 1.5rem;
@@ -115,7 +187,7 @@ label {
 
     label {
         font-size: 1rem;
-        margin-right: 0.5rem; 
+        margin-right: 0.5rem;
     }
 
     #location-input {
@@ -124,7 +196,7 @@ label {
 
     #predict-button {
         font-size: 0.9rem;
-        margin-top: 0.5rem; 
+        margin-top: 0.5rem;
     }
 
     #prediction-results h2 {
@@ -135,7 +207,20 @@ label {
         font-size: 1rem;
     }
 
-    #map {
-        height: 200px;
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-toggler-icon {
+        color: var(--main2);
+    }
+
+    .navbar-custom {
+        padding: 1rem;
     }
 }

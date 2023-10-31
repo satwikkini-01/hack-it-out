@@ -2,7 +2,6 @@ var userLatitude;
 var userLongitude;
 
 async function getNearbyHospitals(latitude, longitude) {
-    // Use OpenStreetMap Overpass API to fetch nearby hospitals
     const overpassBaseUrl = 'https://overpass-api.de/api/interpreter';
     const overpassQuery = `[out:json][timeout:25];
       (
@@ -18,7 +17,7 @@ async function getNearbyHospitals(latitude, longitude) {
         const response = await fetch(apiUrl);
         const data = await response.json();
         console.log(data.elements);
-        return data.elements; // Returns the list of hospitals
+        return data.elements;
     } catch (error) {
         console.error('Error fetching nearby hospitals:', error);
         return null;

@@ -1,0 +1,141 @@
+:root {
+    --main1: #fbf9f2;
+    --main2: #0093AA;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    background-color: var(--main2);
+    color: var(--main1);
+    padding: 1rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1rem;
+}
+
+#input-section {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.input-group {
+    text-align: center;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f0f0f0;
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#location-input {
+    width: 70%;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+#predict-button {
+    background-color: var(--main2);
+    color: var(--main1);
+    padding: 1rem 2rem;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 10px;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+#predict-button:hover {
+    background-color: #007e96;
+    transform: translateY(-3px);
+}
+
+#predict-button:active {
+    background-color: #005b6c;
+    transform: translateY(0);
+}
+
+
+.result-box {
+    text-align: left;
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 2rem auto;
+    max-width: 500px; 
+}
+
+.result-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.result-box p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+
+#map {
+    width: 100%;
+    height: 300px;
+}
+
+
+@media only screen and (max-width: 576px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    label {
+        font-size: 1rem;
+        margin-right: 0.5rem; 
+    }
+
+    #location-input {
+        font-size: 0.9rem;
+    }
+
+    #predict-button {
+        font-size: 0.9rem;
+        margin-top: 0.5rem; 
+    }
+
+    #prediction-results h2 {
+        font-size: 1.2rem;
+    }
+
+    #prediction-results p {
+        font-size: 1rem;
+    }
+
+    #map {
+        height: 200px;
+    }
+}

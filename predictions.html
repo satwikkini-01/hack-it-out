@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Earthquake Prediction</title>
+    <link rel="stylesheet" href="predictionscss.css">
+</head>
+
+<body>
+    <header>
+        <h1>Earthquake Prediction</h1>
+        <p>Enter a location to get earthquake predictions.</p>
+    </header>
+
+    <section id="input-section">
+        <div class="input-group">
+            <label for="location-input">Enter Location:</label>
+            <input type="text" id="location-input" placeholder="City or Coordinates">
+        </div>
+        <button id="predict-button">Predict</button>
+    </section>
+
+    <section id="prediction-results">
+        <div class="result-box">
+            <h2>Prediction Results</h2>
+            <p><strong>Predicted Earthquake Probability:</strong> <span id="probability">-</span></p>
+            <p><strong>Prediction Date and Time:</strong> <span id="prediction-time">-</span></p>
+            <p><strong>Location:</strong> <span id="location">-</span></p>
+            <p><strong>Description:</strong> <span id="description">-</span></p>
+        </div>
+    </section>
+    
+
+    <div id="map"></div>
+
+    <script>
+        // Your JavaScript code for fetching predictions and displaying them on the page
+        // You will need to integrate your machine learning model and API here
+    </script>
+</body>
+
+</html>

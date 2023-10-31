@@ -64,6 +64,15 @@ header p {
     position: relative;
 }
 
+.nav-pred {
+    color: var(--main2);
+    font-size: 1.2rem;
+    margin: 0 -1rem;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+    font-weight: 450;
+    position: relative;
+}
+
 .nav-link:after {
     content: '';
     position: absolute;
@@ -223,4 +232,22 @@ label {
     .navbar-custom {
         padding: 1rem;
     }
+}
+
+ul li ul.dropdown li{
+    display: block;
+}
+
+ul li ul.dropdown{
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+ul li a:hover{
+    background: #0093AA;
+}
+
+ul li:hover ul.dropdown{
+    display: block;
 }

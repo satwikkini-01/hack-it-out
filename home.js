@@ -65,11 +65,7 @@ function eonet() {
             });
 
             initializeMapView();
-
-            // Perform operations using the coordinates
             console.log(coordinates);
-
-            // Or use filteredData directly if needed
             console.log(filteredData);
         })
         .catch(error => {

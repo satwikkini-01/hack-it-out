@@ -37,7 +37,6 @@ html {
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
     font-weight: 500;
     position: relative;
-    /* Needed for pseudo-element positioning */
 }
 
 .nav-link:after {
@@ -82,7 +81,6 @@ html {
 #map {
     position: absolute;
     top: 56px;
-    /* Adjust based on the navbar height */
     bottom: 0;
     width: 100%;
 }

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Natural Disaster Survival Manual</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="manual.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+        <a class="navbar-brand" href="#">NameDecide</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="healthcare.html">HealthCare</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="predmain" href="#">Predictions</a>
+                    <ul class="dropdown" id="submain">
+                        <li><a class="nav-pred" href="predictions.html"> Earthquake Prediction</a></li>
+                        <li><a class="nav-pred" href="flood.html"> Flood Prediction</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="manual.html">Manual</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-button" href="#">LogIn</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="not-navbar">
+        <div class="sidebar">
+            <h4>Types of Disasters</h4>
+            <ul>
+                <li><a class="side-link" href="#earthquake">Earthquake</a></li>
+                <li><a class="side-link" href="#hurricane">Hurricane</a></li>
+                <li><a class="side-link" href="#flood">Flood</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+
+            <section id="earthquake">
+                <h2>Earthquake</h2>
+                <h3>Before an Earthquake:</h3>
+                <p>- Secure heavy items and furniture to prevent them from toppling.</p>
+                <p>- Create an emergency kit with essentials like water, non-perishable food, a flashlight, and first
+                    aid supplies.</p>
+                <p>- Develop a family communication plan and identify safe spots in your home.</p>
+
+                <h3>During an Earthquake:</h3>
+                <p>- Drop, cover, and hold on. Take cover under a sturdy piece of furniture.</p>
+                <p>- Stay indoors if you are inside a building, and avoid doorways or windows.</p>
+                <p>- If you are outside, move to an open area away from buildings, trees, streetlights, and utility
+                    wires.</p>
+
+                <h3>After an Earthquake:</h3>
+                <p>- Check for injuries and administer first aid.</p>
+                <p>- Assess your surroundings for hazards like gas leaks or downed power lines.</p>
+                <p>- Listen to the radio for updates and instructions from local authorities.</p>
+            </section>
+
+            <section id="hurricane">
+                <h2>Hurricane</h2>
+                <h3>Before a Hurricane:</h3>
+                <p>- Create an evacuation plan and identify evacuation routes.</p>
+                <p>- Stock up on non-perishable food, water, medications, and essential supplies.</p>
+                <p>- Protect windows and doors with storm shutters or plywood.</p>
+
+                <h3>During a Hurricane:</h3>
+                <p>- Stay indoors and away from windows.</p>
+                <p>- Be prepared to take shelter in a small interior room if necessary.</p>
+                <p>- Avoid using candles and be cautious of flooding.</p>
+
+                <h3>After a Hurricane:</h3>
+                <p>- Listen to local news and follow instructions from emergency services.</p>
+                <p>- Avoid floodwaters and downed power lines.</p>
+                <p>- Check your home for damage and use caution when cleaning up.</p>
+            </section>
+
+            <section id="flood">
+                <h2>Flood</h2>
+                <h3>Before a Flood:</h3>
+                <p>- Know your area's flood risk and prepare an emergency kit.</p>
+                <p>- Move important items to higher ground and consider flood insurance.</p>
+                <p>- Create an emergency communication plan with family members.</p>
+
+                <h3>During a Flood:</h3>
+                <p>- Evacuate if instructed to do so and move to higher ground.</p>
+                <p>- Avoid walking or driving through floodwaters.</p>
+                <p>- Stay informed through local news and weather updates.</p>
+
+                <h3>After a Flood:</h3>
+                <p>- Return home only when authorities say it is safe.</p>
+                <p>- Check for structural damage before re-entering your home.</p>
+                <p>- Be cautious of contaminated water and potential hazards.</p>
+            </section>
+        </div>
+    </div>
+
+    <script src="manual.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

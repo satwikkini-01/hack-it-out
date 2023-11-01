@@ -29,7 +29,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Manual</a>
+                    <a class="nav-link" href="manual.html">Manual</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-button" href="#">LogIn</a>
@@ -70,7 +70,7 @@
         // You will need to integrate your machine learning model and API here
         
         let address;
-        function getUserLocationAndFindHospitals() {
+        function getUserLocation() {
         navigator.geolocation.getCurrentPosition(async (position) => {
             userLatitude = position.coords.latitude;
             userLongitude = position.coords.longitude;
@@ -93,7 +93,7 @@
         });
         
     }
-    getUserLocationAndFindHospitals();
+    getUserLocation();
     const locationjs = document.getElementById("location")
         const predict = document.getElementById("predict-button")
         predict.addEventListener("click",function(){

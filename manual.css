@@ -13,6 +13,12 @@ html {
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+
 .navbar-custom {
     background-color: var(--main1);
     padding: 1.5rem 3rem;
@@ -87,77 +93,88 @@ html {
     color: var(--main1);
 }
 
-#map {
-    position: absolute;
-    top: 56px;
-    bottom: 0;
-    width: 100%;
+ul li ul.dropdown li{
+    display: block;
 }
 
-.leaflet-control-attribution {
+ul li ul.dropdown{
+    width: 100%;
+    position: absolute;
+    z-index: 999;
     display: none;
 }
 
-.red-marker {
-    filter: hue-rotate(150deg);
+ul li:hover ul.dropdown{
+    display: block;
 }
 
-.black-marker {
-    filter: saturate(0) contrast(3);
-}
-
-.green-marker {
-    filter: hue-rotate(240deg);
-}
-
-.purple-marker {
-    filter: hue-rotate(90deg);
-}
-
-.default-marker {
-    filter: hue-rotate(300deg);
-}
-
-.legend {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-.colourbox {
-    height: 35px;
-    width: 50px;
-    border-radius: 5px;
-}
-
-.table-borderless {
+.dropdown{
     background-color: var(--main1);
-    margin: 0;
-    border-radius: 20px;
-    border-collapse: collapse;
-    border: none;
 }
 
-td, th{
-    padding: 0.5rem;
-    margin: 1rem;
-    text-align: center;
+.not-navbar{
+    position: absolute;
+    top: 100px;
+    background-color: var(--main1);
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
 }
 
-.th1{
-    background-color: var(--main2);
-    color: var(--main1);
-    border-radius: 10px 0 0 0;
+h1,
+h2 {
+    margin-top: 0;
+    font-family: 'Bakbak One', Arial, Helvetica, sans-serif;
 }
 
-.th2{
-    background-color: var(--main2);
-    color: var(--main1);
-    border-radius: 0 10px 0 0;
+.sidebar {
+    padding: 20px;
+    border-right: 1px solid black;
+    text-align: left;
+    position: fixed;
+    left: 0;
+    overflow-y: auto;
 }
 
-@media only screen and (max-width: 576px) {
+h4{
+    font-family: 'Bakbak One', Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+}
+
+.side-link{
+    text-decoration: none;
+    color: black;
+    margin: 1rem 0;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.side-link:hover{
+    text-decoration: underline;
+    color: black;
+}
+
+.content {
+    padding: 20px;
+    font-size: 1.2rem;
+    margin-left: 250px;
+}
+
+.section {
+    display: none;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -175,57 +192,20 @@ td, th{
         padding: 1rem;
     }
 
-    .legend {
-        font-size: 0.7rem;
+    .not-navbar{
+        top: 80px;
+    }
+
+    .sidebar{
+        width: 30%;
+    }
+
+    .side-link{
         padding: 0;
+        font-size: 1rem;
     }
 
-    .colourbox {
-        height: 15px;
-        width: 20px;
-        padding: 0;
-        margin: 0.3rem;
+    .content{
+        margin-left: 30%;
     }
-
-    .legend tr {
-        padding: 0;
-        margin: 0;
-    }
-
-    .legend td {
-        padding: 0.2rem;
-        margin: 0.2rem;
-    }
-
-    .legend th {
-        padding: 0.2rem;
-        margin: 0;
-    }
-
-    .leaflet-marker-icon{
-        width: 10px;
-        height: 10px;
-    }
-}
-
-ul li ul.dropdown li{
-    display: block;
-}
-
-ul li ul.dropdown{
-    width: 100%;
-    position: absolute;
-    z-index: 999;
-    display: none;
-}
-ul li a:hover{
-    background: #0093AA;
-}
-
-ul li:hover ul.dropdown{
-    display: block;
-}
-
-.dropdown{
-    background-color: var(--main1);
 }

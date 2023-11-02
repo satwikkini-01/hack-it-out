@@ -131,6 +131,10 @@ html {
     border-radius: 5px;
 }
 
+.scale-down{
+    transform: scale(0.8);
+}
+
 .table-borderless {
     background-color: var(--main1);
     margin: 0;

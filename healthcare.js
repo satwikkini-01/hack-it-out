@@ -73,6 +73,31 @@ async function getNearbyFire(latitude, longitude) {
 function plotHospitalsOnMap(hospitals, police, fire) {
   const map = L.map('map', { zoomControl: false }).setView([userLatitude, userLongitude], 15);
 
+  const hospitalIconUrl = document.getElementById('hospital-icon-url').value;
+  const policeIconUrl = document.getElementById('police-icon-url').value;
+  const fireIconUrl = document.getElementById('fire-icon-url').value;
+  const currIconUrl = document.getElementById('curr-icon-url').value;
+
+  const hospitalIcon = L.icon({
+    iconUrl: hospitalIconUrl,
+    iconSize: [32, 32]
+  });
+
+  const policeIcon = L.icon({
+    iconUrl: policeIconUrl,
+    iconSize: [32, 32]
+  });
+
+  const fireIcon = L.icon({
+    iconUrl: fireIconUrl,
+    iconSize: [32, 32]
+  });
+
+  const currIcon = L.icon({
+    iconUrl: currIconUrl,
+    iconSize: [32, 32]
+  });
+
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     maxZoom: 18,
     minZoom: 3,
@@ -85,7 +110,7 @@ function plotHospitalsOnMap(hospitals, police, fire) {
   );
   map.setMaxBounds(boundsLargeScreen);
 
-  const marker = L.marker([userLatitude, userLongitude]).addTo(map);
+  const marker = L.marker([userLatitude, userLongitude], { icon: currIcon }).addTo(map);
   marker.bindPopup('Your Location', { direction: 'top' });
 
   marker.on('mouseover', function () {
@@ -95,10 +120,9 @@ function plotHospitalsOnMap(hospitals, police, fire) {
   marker.on('mouseout', function () {
     marker.closePopup();
   });
-  marker._icon.classList.add('red-marker');
 
   hospitals.forEach(hospital => {
-    const marker = L.marker([hospital.lat, hospital.lon]).addTo(map);
+    const marker = L.marker([hospital.lat, hospital.lon], { icon: hospitalIcon }).addTo(map);
 
     marker.bindPopup(hospital.tags.name || 'Hospital', { direction: 'top' });
 
@@ -118,7 +142,7 @@ function plotHospitalsOnMap(hospitals, police, fire) {
   });
 
   police.forEach(polic => {
-    const marker = L.marker([polic.lat, polic.lon]).addTo(map);
+    const marker = L.marker([polic.lat, polic.lon], { icon: policeIcon }).addTo(map);
 
     marker.bindPopup(polic.tags.name || 'Police Station', { direction: 'top' });
 
@@ -138,7 +162,7 @@ function plotHospitalsOnMap(hospitals, police, fire) {
   });
 
   fire.forEach(fir => {
-    const marker = L.marker([fir.lat, fir.lon]).addTo(map);
+    const marker = L.marker([fir.lat, fir.lon], { icon: fireIcon }).addTo(map);;
 
     marker.bindPopup(fir.tags.name || 'Fire Station', { direction: 'top' });
 

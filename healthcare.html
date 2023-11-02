@@ -54,15 +54,33 @@
             <tbody>
                 <tr>
                     <td class="legendimage">
-                        <div class="colourbox" style="background-color: rgb(222, 84, 74);"></div>
+                        <div class="colourbox" style="background-color: #727372;"></div>
                     </td>
                     <td class="legendtext">Your current location</td>
                 </tr>
                 <tr>
                     <td class="legendimage">
-                        <div class="colourbox" style="background-color: rgb(38, 126, 203);"></div>
+                        <div class="colourbox" style="background-color: #ff5757;">
+                            <img src="./crisis/static/images/hospital-legend.png" alt="" class="scale-down">
+                        </div>
                     </td>
                     <td class="legendtext">Hospitals near you</td>
+                </tr>
+                <tr>
+                    <td class="legendimage">
+                        <div class="colourbox" style="background-color: #fcb361;">
+                            <img src="./crisis/static/images/police-legend.png" alt="">
+                        </div>
+                    </td>
+                    <td class="legendtext">Police Stations near you</td>
+                </tr>
+                <tr>
+                    <td class="legendimage">
+                        <div class="colourbox" style="background-color: #ff5757;">
+                            <img src="./crisis/static/images/fire-legend.png" alt="" class="scale-down">
+                        </div>
+                    </td>
+                    <td class="legendtext">Fire Stations near you</td>
                 </tr>
             </tbody>
         </table>
@@ -84,6 +102,11 @@
             <button id="send-button"><i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i></button>
         </div>
     </div>
+
+    <input type="hidden" id="hospital-icon-url" value="{% static 'images/hospital-icon.png' %}">
+    <input type="hidden" id="police-icon-url" value="{% static 'images/police-icon.png' %}">
+    <input type="hidden" id="fire-icon-url" value="{% static 'images/firred-icon.png' %}">
+    <input type="hidden" id="curr-icon-url" value="{% static 'images/others-icon.png' %}">
 
     <script type='text/javascript' src='config.js'></script>
     <script src="healthcare.js"></script>

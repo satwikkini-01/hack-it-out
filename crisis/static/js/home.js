@@ -88,6 +88,43 @@ function setInitialView() {
     map.options.minZoom = 3;
 }
 
+const earthquakeIconUrl = document.getElementById('earthquake-icon-url').value;
+const stormIconUrl = document.getElementById('storm-icon-url').value;
+const fireIconUrl = document.getElementById('fire-icon-url').value;
+const icebergIconUrl = document.getElementById('iceberg-icon-url').value;
+const volcanoIconUrl = document.getElementById('volcano-icon-url').value;
+const othersIconUrl = document.getElementById('others-icon-url').value;
+
+const earthquakeIcon = L.icon({
+    iconUrl: earthquakeIconUrl,
+    iconSize: [32, 32]
+});
+
+const stormIcon = L.icon({
+    iconUrl: stormIconUrl,
+    iconSize: [32, 32]
+});
+
+const fireIcon = L.icon({
+    iconUrl: fireIconUrl,
+    iconSize: [32, 32]
+});
+
+const icebergIcon = L.icon({
+    iconUrl: icebergIconUrl,
+    iconSize: [32, 32]
+});
+
+const volcanoIcon = L.icon({
+    iconUrl: volcanoIconUrl,
+    iconSize: [32, 32]
+});
+
+const othersIcon = L.icon({
+    iconUrl: othersIconUrl,
+    iconSize: [32, 32]
+});
+
 
 function initializeMapView() {
     setInitialView();
@@ -98,7 +135,7 @@ function initializeMapView() {
 
     if (earthquakeData && earthquakeData.length > 0) {
         earthquakeData.forEach(dataOne => {
-            const marker = L.marker(dataOne.coordinates).addTo(map);
+            const marker = L.marker(dataOne.coordinates, { icon: earthquakeIcon }).addTo(map);
             marker.bindPopup('Earthquake, ' + dataOne.title, { closeOnClick: false, autoClose: false });
 
             marker.on('mouseover', function () {
@@ -113,15 +150,26 @@ function initializeMapView() {
                 const url = "https://www.google.com/search?q=" + encodeURIComponent("Earthquake " + dataOne.title);
                 window.open(url, '_blank');
             });
-
-            marker._icon.classList.add('red-marker');
         });
     } else {
         console.log("no earthquake data");
     }
 
     filteredData.forEach(dataOne => {
-        const marker = L.marker(dataOne.coordinates).addTo(map);
+        let marker;
+
+        if (dataOne.category === 'Volcanoes') {
+            marker = L.marker(dataOne.coordinates, { icon: volcanoIcon }).addTo(map);
+        } else if (dataOne.category === 'Wildfires') {
+            marker = L.marker(dataOne.coordinates, { icon: fireIcon }).addTo(map);
+        } else if (dataOne.category === 'Sea and Lake Ice') {
+            marker = L.marker(dataOne.coordinates, { icon: icebergIcon }).addTo(map);
+        } else if (dataOne.category === 'Severe Storms') {
+            marker = L.marker(dataOne.coordinates, { icon: stormIcon }).addTo(map);
+        } else {
+            marker = L.marker(dataOne.coordinates, { icon: othersIcon }).addTo(map);
+        }
+
         marker.bindPopup(dataOne.title, '\n' + dataOne.description, { closeOnClick: false, autoClose: false });
 
         marker.on('mouseover', function () {
@@ -136,20 +184,6 @@ function initializeMapView() {
             const url = "https://www.google.com/search?q=" + encodeURIComponent(dataOne.title);
             window.open(url, '_blank');
         });
-
-        console.log(dataOne.description);
-
-        if (dataOne.category === 'Volcanoes') {
-            marker._icon.classList.add('black-marker');
-        } else if (dataOne.category === 'Wildfires') {
-            marker._icon.classList.add('green-marker');
-        } else if (dataOne.category === 'Sea and Lake Ice') {
-            marker._icon.classList.add('purple-marker');
-        } else if (dataOne.category === 'Severe Storms') {
-            marker._icon.classList.add('blue-marker');
-        } else {
-            marker._icon.classList.add('default-marker');
-        }
     });
 
 }

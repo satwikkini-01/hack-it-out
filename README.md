@@ -130,7 +130,7 @@ HTML, CSS, BootStrap, JavaScript, Python, Django
 APIs: USGS, NASA EONET, Leaflet, OpenStreetMap
 
 ## Screenshots
-
+<img width="1163" alt="Screenshot-1" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/f116bf93-0ad2-4629-9f7f-362baef93459">
 
 
 

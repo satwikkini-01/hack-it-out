@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --main1: #fbf9f2;
+    --main2: #0093AA;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1rem;
+    background-color: var(--main2);
+}
+
+h2{
+    font-family: 'Bakbak One', Arial, Helvetica, sans-serif;
+    color: var(--main2);
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.container {
+    background-color: var(--main1);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.form {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    animation: slideup 1s;
+}
+
+@keyframes slideup {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+input,
+button {
+    width: 100%;
+    padding: 0.7rem 0.3rem;
+    margin-bottom: 0.5rem;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: var(--main1);
+    transition: border-color 0.3s;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
+input:focus{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+button {
+    background-color: var(--main2);
+    color: var(--main1) ;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border: 2px solid var(--main1);
+    transition: background-color 0.3s;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
+button:hover {
+    background-color: var(--main1);
+    color: var(--main2);
+    border: 2px solid var(--main2);
+}
+
+.container p{
+    margin: 0;
+    padding: 0;
+}
+
+.container p a{
+    color: var(--main2);
+    text-decoration: none;
+}
+
+.container p a:hover{
+    text-decoration: underline;
+}

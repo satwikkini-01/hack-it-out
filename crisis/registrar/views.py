@@ -3,6 +3,9 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
+from django.http import HttpResponse
+
+from .chat import get_response
 
 def register(request):
     if request.method == 'POST':
@@ -29,6 +32,11 @@ def custom_login(request):
     else:
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
+
+def getResponse(request):
+    userMessage = request.GET.get('IPMessage')
+    chat_ans = str(get_response(userMessage))
+    return HttpResponse(chat_ans)
 
 def home(request):
     return render(request,'home.html')

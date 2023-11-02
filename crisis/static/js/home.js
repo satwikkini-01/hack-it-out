@@ -234,13 +234,17 @@ function receiveMessage(message) {
     chatBoxMessages.appendChild(botMessage);
 }
 
+let outputText;
 function sendUserMessage() {
     const message = userInput.value;
     if (message.trim() !== '') {
         sendMessage(message);
+        $.get('/accounts/getResponse',{IPMessage:message}).done(function(data){
+            outputText = data;
+        })
         scrollToBottom();
         setTimeout(() => {
-            receiveMessage("This is a bot response.");
+            receiveMessage(outputText);
             scrollToBottom();
         }, 1000);
         userInput.value = '';

@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Custom apps
     'registrar',
-    'corsheaders'
+    'corsheaders',
+    'Predictions'
 ]
 
 MIDDLEWARE = [

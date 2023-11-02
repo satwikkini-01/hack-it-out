@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -7,38 +8,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="predictionscss.css">
+    <link rel="stylesheet" href="{% static 'css/predictionscss.css' %}">
     <script src="https://kit.fontawesome.com/05b867acb2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
-        <a class="navbar-brand" href="home.html">GeoCrisis</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="healthcare.html">Emergency</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="predmain" href="#">Predictions</a>
-                    <ul class="dropdown" id="submain">
-                        <li><a class="nav-pred" href="predictions.html"> Earthquake Prediction</a></li>
-                        <li><a class="nav-pred" href="flood.html"> Flood Prediction</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="manual.html">Manual</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-button" href="#">LogIn</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <a class="navbar-brand" href="{% url 'home' %}">GeoCrisis</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'health' %}">Emergency</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="predmain" href="#">Predictions</a>
+                <ul class="dropdown" id="submain">
+                    <li><a class="nav-pred" href="{% url 'earthquake_prediction' %}">Earthquake Prediction</a></li>
+                    <li><a class="nav-pred" href="{% url 'flood_prediction' %}">Flood Prediction</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'manual' %}">Manual</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-button" href="{% url 'login' %}">Log In</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
     <header>
         <h1>Flood Prediction</h1>
         <p>Enter the rainfall (in cm) to get flood predictions.</p>
@@ -116,9 +118,21 @@
         const locationjs = document.getElementById("location")
         const predict = document.getElementById("predict-button")
         predict.addEventListener("click", function () {
-            const loc = address;
-            locationjs.textContent = loc;
+            const loc = address;  // Replace with your logic to get the latitude and longitude
+            const latitude =  // Calculate or fetch the latitude here
+            const longitude =  // Calculate or fetch the longitude here
+            
+            fetch(`http://127.0.0.1/predict/flood?latitude=${latitude}&longitude=${longitude}`)
+                .then(response => response.json())
+                .then(data => {
+                    const message = data.message;
+                    description.textContent = message;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         });
+        
 
         //Chatbot:
 
@@ -132,14 +146,12 @@
         chatCircle.addEventListener('click', () => {
             chatCircle.style.display = 'none';
             chatBox.style.right = '20px';
-            chatBoxHeader.style.display = 'flex';
             chatBoxMessages.style.display = 'block';
         });
 
         closeButton.addEventListener('click', () => {
             chatCircle.style.display = 'flex';
             chatBox.style.right = '-320px';
-            chatBoxHeader.style.display = 'none';
             chatBoxMessages.style.display = 'none';
         });
 
@@ -162,13 +174,21 @@
             if (message.trim() !== '') {
                 sendMessage(message);
                 scrollToBottom();
-                setTimeout(() => {
-                    receiveMessage("This is a bot response.");
-                    scrollToBottom();
-                }, 1000);
+                fetch(`http://127.0.0.1:8000/accounts/getResponse?IPmessage=${message}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const botResponse = data.message;
+                        receiveMessage(botResponse);
+                        scrollToBottom();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+
                 userInput.value = '';
             }
         }
+
 
         sendButton.addEventListener('click', () => {
             sendUserMessage();

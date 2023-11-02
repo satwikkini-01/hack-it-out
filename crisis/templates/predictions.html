@@ -14,32 +14,33 @@
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
-        <a class="navbar-brand" href="home.html">GeoCrisis</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="healthcare.html">Emergency</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="predmain" href="#">Predictions</a>
-                    <ul class="dropdown" id="submain">
-                        <li><a class="nav-pred" href="predictions.html"> Earthquake Prediction</a></li>
-                        <li><a class="nav-pred" href="flood.html"> Flood Prediction</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="manual.html">Manual</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-button" href="#">LogIn</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <a class="navbar-brand" href="{% url 'home' %}">GeoCrisis</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'health' %}">Emergency</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="predmain" href="#">Predictions</a>
+                <ul class="dropdown" id="submain">
+                    <li><a class="nav-pred" href="{% url 'earthquake_prediction' %}">Earthquake Prediction</a></li>
+                    <li><a class="nav-pred" href="{% url 'flood_prediction' %}">Flood Prediction</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'manual' %}">Manual</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-button" href="{% url 'login' %}">Log In</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
     <header>
         <h1>Earthquake Prediction</h1>
         <p>Enter a location to get earthquake predictions.</p>
@@ -114,6 +115,19 @@
         const predict = document.getElementById("predict-button")
         predict.addEventListener("click", function () {
             getLocation();
+            const loc = address;  // Replace with your logic to get the latitude and longitude
+            const latitude =  // Calculate or fetch the latitude here
+            const longitude =  // Calculate or fetch the longitude here
+            
+            fetch(`http://127.0.0.1/predict/quake?latitude=${latitude}&longitude=${longitude}`)
+                .then(response => response.json())
+                .then(data => {
+                    const message = data.message;
+                    description.textContent = message;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         });
         
         let address;
@@ -192,7 +206,6 @@
                 sendMessage(message);
                 scrollToBottom();
 
-                // Make a GET request to a URL (replace 'your-url' with the actual URL)
                 fetch(`http://127.0.0.1:8000/accounts/getResponse?IPmessage=${message}`)
                     .then(response => response.json())
                     .then(data => {

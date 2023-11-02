@@ -59,3 +59,7 @@ elif(predLvl > 1.5):
   print("There is a mild chance of Flood in your location.")
 else:
   print("There is nearly no chance of Flood in your location.")
+
+def flood_predict():
+  message = ""
+  return message

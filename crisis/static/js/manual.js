@@ -33,45 +33,53 @@ const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
 
 chatCircle.addEventListener('click', () => {
-  chatCircle.style.display = 'none';
-  chatBox.style.right = '20px';
-  chatBoxHeader.style.display = 'flex';
-  chatBoxMessages.style.display = 'block';
+    chatCircle.style.display = 'none';
+    chatBox.style.right = '20px';
+    chatBoxMessages.style.display = 'block';
 });
 
 closeButton.addEventListener('click', () => {
-  chatCircle.style.display = 'flex';
-  chatBox.style.right = '-320px';
-  chatBoxHeader.style.display = 'none';
-  chatBoxMessages.style.display = 'none';
+    chatCircle.style.display = 'flex';
+    chatBox.style.right = '-320px';
+    chatBoxMessages.style.display = 'none';
 });
 
 function sendMessage(message) {
-  const userMessage = document.createElement('div');
-  userMessage.className = 'message user-message';
-  userMessage.innerHTML = message;
-  chatBoxMessages.appendChild(userMessage);
+    const userMessage = document.createElement('div');
+    userMessage.className = 'message user-message';
+    userMessage.innerHTML = message;
+    chatBoxMessages.appendChild(userMessage);
 }
 
 function receiveMessage(message) {
-  const botMessage = document.createElement('div');
-  botMessage.className = 'message bot-message';
-  botMessage.innerHTML = message;
-  chatBoxMessages.appendChild(botMessage);
+    const botMessage = document.createElement('div');
+    botMessage.className = 'message bot-message';
+    botMessage.innerHTML = message;
+    chatBoxMessages.appendChild(botMessage);
 }
 
 function sendUserMessage() {
-  const message = userInput.value;
-  if (message.trim() !== '') {
-    sendMessage(message);
-    scrollToBottom();
-    setTimeout(() => {
-      receiveMessage("This is a bot response.");
-      scrollToBottom();
-    }, 1000);
-    userInput.value = '';
-  }
+    const message = userInput.value;
+    if (message.trim() !== '') {
+        sendMessage(message);
+        scrollToBottom();
+
+        // Make a GET request to a URL (replace 'your-url' with the actual URL)
+        fetch(`http://127.0.0.1:8000/accounts/getResponse?IPmessage=${message}`)
+            .then(response => response.json())
+            .then(data => {
+                const botResponse = data.message;
+                receiveMessage(botResponse);
+                scrollToBottom();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        userInput.value = '';
+    }
 }
+
 
 sendButton.addEventListener('click', () => {
   sendUserMessage();

@@ -209,14 +209,12 @@ const sendButton = document.getElementById('send-button');
 chatCircle.addEventListener('click', () => {
     chatCircle.style.display = 'none';
     chatBox.style.right = '20px';
-    chatBoxHeader.style.display = 'flex';
     chatBoxMessages.style.display = 'block';
 });
 
 closeButton.addEventListener('click', () => {
     chatCircle.style.display = 'flex';
     chatBox.style.right = '-320px';
-    chatBoxHeader.style.display = 'none';
     chatBoxMessages.style.display = 'none';
 });
 
@@ -234,19 +232,24 @@ function receiveMessage(message) {
     chatBoxMessages.appendChild(botMessage);
 }
 
-let outputText;
 function sendUserMessage() {
     const message = userInput.value;
     if (message.trim() !== '') {
         sendMessage(message);
-        $.get('/accounts/getResponse',{IPMessage:message}).done(function(data){
-            outputText = data;
-        })
         scrollToBottom();
-        setTimeout(() => {
-            receiveMessage(outputText);
-            scrollToBottom();
-        }, 1000);
+
+        // Make a GET request to a URL (replace 'your-url' with the actual URL)
+        fetch(`http://127.0.0.1:8000/accounts/getResponse?IPmessage=${message}`)
+            .then(response => response.json())
+            .then(data => {
+                const botResponse = data.message;
+                receiveMessage(botResponse);
+                scrollToBottom();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
         userInput.value = '';
     }
 }

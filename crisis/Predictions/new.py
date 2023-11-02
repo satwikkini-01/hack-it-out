@@ -8,8 +8,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
+import os
 
-data = pd.read_csv('database.csv')
+data = pd.read_csv(os.path.join('Predictions','database.csv'))
 backup = data.copy()
 
 data = data[['Date', 'Time', 'Latitude', 'Longitude', 'Depth', 'Magnitude']]
@@ -42,6 +43,8 @@ reg = RandomForestRegressor(random_state=43)
 reg.fit(X_train, y_train)
 reg.predict(X_test)
 
+def quake_predict(lat,long):
+    return reg.predict([[int(time.time()),lat,long]])
 ''' Format Below'''
 ## reg.predict([[timestamp,lat,long]]) ##
 

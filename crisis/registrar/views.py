@@ -5,7 +5,8 @@ from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
+from Predictions.new import quake_predict
+from Predictions.flood import flood_predict
 
 from .chat import get_response
 
@@ -45,8 +46,43 @@ def getResponse(request):
     print(message)
     return JsonResponse(message)
 
+@csrf_exempt
+def quakePredict(request):
+    latitude = request.GET.get('latitude')
+    longitude = request.GET.get('longitude')
+    response = quake_predict(latitude,longitude)
+    message = {
+        'message':response
+    }
+    print(message)
+    return JsonResponse(message)
+
+@csrf_exempt
+def floodPredict(request):
+    latitude = request.GET.get('latitude')
+    longitude = request.GET.get('longitude')
+    response = flood_predict(latitude,longitude)
+    message = {
+        'message':response
+    }
+    print(message)
+    return JsonResponse(message)
+
 def home(request):
     return render(request,'home.html')
 
 def predictions(request):
     return render(request,'predictions.html')
+
+def flood_predict(request):
+    return render(request,'flood.html')
+
+
+def health(request):
+    return render(request,'healthcare.html')
+
+def manual(request):
+    return render(request,'manual.html')
+
+def home(request):
+    return render(request,'home.html')

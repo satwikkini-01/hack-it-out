@@ -3,7 +3,9 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
 
 from .chat import get_response
 
@@ -33,10 +35,18 @@ def custom_login(request):
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
 
+@csrf_exempt
 def getResponse(request):
     userMessage = request.GET.get('IPMessage')
-    chat_ans = str(get_response(userMessage))
-    return HttpResponse(chat_ans)
+    chat_ans = str(get_response(str(userMessage)))
+    message = {
+        'message':chat_ans
+    }
+    print(message)
+    return JsonResponse(message)
 
 def home(request):
     return render(request,'home.html')
+
+def predictions(request):
+    return render(request,'predictions.html')

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
     <script src="https://kit.fontawesome.com/05b867acb2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="predictionscss.css">
+    <link rel="stylesheet" href="{% static 'css/predictionscss.css' %}">
 </head>
 
 <body>
@@ -162,14 +163,12 @@
         chatCircle.addEventListener('click', () => {
             chatCircle.style.display = 'none';
             chatBox.style.right = '20px';
-            chatBoxHeader.style.display = 'flex';
             chatBoxMessages.style.display = 'block';
         });
 
         closeButton.addEventListener('click', () => {
             chatCircle.style.display = 'flex';
             chatBox.style.right = '-320px';
-            chatBoxHeader.style.display = 'none';
             chatBoxMessages.style.display = 'none';
         });
 
@@ -192,13 +191,23 @@
             if (message.trim() !== '') {
                 sendMessage(message);
                 scrollToBottom();
-                setTimeout(() => {
-                    receiveMessage("This is a bot response.");
-                    scrollToBottom();
-                }, 1000);
+
+                // Make a GET request to a URL (replace 'your-url' with the actual URL)
+                fetch(`http://127.0.0.1:8000/accounts/getResponse?IPmessage=${message}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const botResponse = data.message;
+                        receiveMessage(botResponse);
+                        scrollToBottom();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+
                 userInput.value = '';
             }
         }
+
 
         sendButton.addEventListener('click', () => {
             sendUserMessage();

@@ -81,6 +81,74 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+        
+
+        let latitude_pred;
+        let longitude_pred;
+        function getLocation() {
+            const city = document.getElementById('location-input').value;
+                const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${city}`;
+                fetch(apiUrl)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.length > 0) {
+                            const location = data[0];
+                            latitude_pred = location.lat;
+                            longitude_pred = location.lon;
+                            getUserLocation();
+                            
+                        } else {
+                            alert('City not found. Please try again.');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+
+        }
+        
+        
+        const locationjs = document.getElementById("location")
+        const predict = document.getElementById("predict-button")
+        predict.addEventListener("click", function () {
+            getLocation();
+        });
+        
+        let address;
+        function getUserLocation() {
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude_pred}&lon=${longitude_pred}`;
+                fetch(apiUrl)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.display_name) {
+                            address = data.display_name;
+                            const resultDiv = document.getElementById('location');
+                            resultDiv.innerHTML = address;
+                            console.log('Location:', address);
+                        } else {
+                            console.error('Location not found');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }, (error) => {
+                console.error('Error getting user location:', error);
+            });
+
+        }
+
+
+        function updateDateTime() {
+            const dateTimeDisplay = document.getElementById('prediction-time');
+            const currentDateTime = new Date();
+            const formattedDateTime = currentDateTime.toLocaleString();
+            dateTimeDisplay.textContent = formattedDateTime;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+
         //Chatbot:
 
         const chatCircle = document.querySelector('.chat-circle');

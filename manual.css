@@ -13,7 +13,7 @@ html {
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
 
-ul{
+ul {
     list-style-type: none;
     padding: 0;
 }
@@ -93,26 +93,26 @@ ul{
     color: var(--main1);
 }
 
-ul li ul.dropdown li{
+ul li ul.dropdown li {
     display: block;
 }
 
-ul li ul.dropdown{
+ul li ul.dropdown {
     width: 100%;
     position: absolute;
     z-index: 999;
     display: none;
 }
 
-ul li:hover ul.dropdown{
+ul li:hover ul.dropdown {
     display: block;
 }
 
-.dropdown{
+.dropdown {
     background-color: var(--main1);
 }
 
-.not-navbar{
+.not-navbar {
     position: absolute;
     top: 100px;
     background-color: var(--main1);
@@ -136,12 +136,12 @@ h2 {
     overflow-y: auto;
 }
 
-h4{
+h4 {
     font-family: 'Bakbak One', Arial, Helvetica, sans-serif;
     font-size: 1.3rem;
 }
 
-.side-link{
+.side-link {
     text-decoration: none;
     color: black;
     margin: 1rem 0;
@@ -149,7 +149,7 @@ h4{
     font-size: 1.2rem;
 }
 
-.side-link:hover{
+.side-link:hover {
     text-decoration: underline;
     color: black;
 }
@@ -164,6 +164,39 @@ h4{
     display: none;
     margin-bottom: 20px;
 }
+
+/* Chatbot */
+
+.chat-circle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--main2);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: -300px;
+    width: 300px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    transition: right 0.3s ease-in-out;
+}
+
+.chat-box-header,
+.chat-box-messages {
+    display: none;
+}
+
 
 @media (max-width: 576px) {
 
@@ -192,20 +225,20 @@ h4{
         padding: 1rem;
     }
 
-    .not-navbar{
+    .not-navbar {
         top: 80px;
     }
 
-    .sidebar{
+    .sidebar {
         width: 30%;
     }
 
-    .side-link{
+    .side-link {
         padding: 0;
         font-size: 1rem;
     }
 
-    .content{
+    .content {
         margin-left: 30%;
     }
 }

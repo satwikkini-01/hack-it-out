@@ -157,6 +157,38 @@ td, th{
     border-radius: 0 10px 0 0;
 }
 
+/* Chatbot */
+
+.chat-circle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--main2);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.chat-box {
+    position: fixed;
+    bottom: 20px;
+    right: -300px;
+    width: 300px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    transition: right 0.3s ease-in-out;
+}
+
+.chat-box-header,
+.chat-box-messages {
+    display: none;
+}
+
 @media only screen and (max-width: 576px) {
     * {
         margin: 0;

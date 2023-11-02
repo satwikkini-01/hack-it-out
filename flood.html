@@ -61,44 +61,103 @@
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+
 
     <div id="map"></div>
+
+    <!---Chatbot-->
+    <div class="chat-circle">
+        <i class="fa-solid fa-comments fa-2x" style="color: #ffffff;"></i>
+    </div>
+
+    <div class="chat-box">
+        <div class="chat-box-header">
+            <span>Chat with AI</span>
+            <button class="close-button">X</button>
+        </div>
+        <div class="chat-box-messages" id="chat-box-messages"></div>
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button id="send-button">Send</button>
+    </div>
 
     <script>
         // Your JavaScript code for fetching predictions and displaying them on the page
         // You will need to integrate your machine learning model and API here
-        
+
         let address;
         function getUserLocation() {
-        navigator.geolocation.getCurrentPosition(async (position) => {
-            userLatitude = position.coords.latitude;
-            userLongitude = position.coords.longitude;
-            const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${userLatitude}&lon=${userLongitude}`;
-            fetch(apiUrl)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.display_name) {
-                address = data.display_name;
-                console.log('Location:', address);
-                } else {
-                console.error('Location not found');
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                userLatitude = position.coords.latitude;
+                userLongitude = position.coords.longitude;
+                const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${userLatitude}&lon=${userLongitude}`;
+                fetch(apiUrl)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.display_name) {
+                            address = data.display_name;
+                            console.log('Location:', address);
+                        } else {
+                            console.error('Location not found');
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }, (error) => {
+                console.error('Error getting user location:', error);
             });
-        }, (error) => {
-            console.error('Error getting user location:', error);
-        });
-        
-    }
-    getUserLocation();
-    const locationjs = document.getElementById("location")
+
+        }
+        getUserLocation();
+        const locationjs = document.getElementById("location")
         const predict = document.getElementById("predict-button")
-        predict.addEventListener("click",function(){
+        predict.addEventListener("click", function () {
             const loc = address;
             locationjs.textContent = loc;
+        });
+
+        //Chatbot:
+
+        const chatCircle = document.querySelector('.chat-circle');
+        const chatBox = document.querySelector('.chat-box');
+        const closeButton = document.querySelector('.close-button');
+        const chatBoxMessages = document.getElementById('chat-box-messages');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        chatCircle.addEventListener('click', () => {
+            chatBox.style.right = '20px';
+            chatBox.querySelector('.chat-box-header').style.display = 'block';
+            chatBox.querySelector('.chat-box-messages').style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', () => {
+            chatBox.style.right = '-300px';
+        });
+
+        function sendMessage(message) {
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.innerHTML = message;
+            chatBoxMessages.appendChild(userMessage);
+        }
+
+        function receiveMessage(message) {
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot-message';
+            botMessage.innerHTML = message;
+            chatBoxMessages.appendChild(botMessage);
+        }
+
+        sendButton.addEventListener('click', () => {
+            const message = userInput.value;
+            if (message.trim() !== '') {
+                sendMessage(message);
+                setTimeout(() => {
+                    receiveMessage("This is a bot response.");
+                }, 1000);
+                userInput.value = '';
+            }
         });
 
     </script>

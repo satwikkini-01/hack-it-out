@@ -5,6 +5,7 @@
     <title>Natural Disaster Survival Manual</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/05b867acb2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="manual.css">
 </head>
@@ -239,6 +240,20 @@
                 <p>- Report the incident to authorities and seek medical attention.</p>
             </section>
         </div>
+        <!---Chatbot-->
+        <div class="chat-circle">
+            <i class="fa-solid fa-comments fa-2x" style="color: #ffffff;"></i>
+          </div>
+          
+          <div class="chat-box">
+            <div class="chat-box-header">
+              <span>Chat with AI</span>
+              <button class="close-button">X</button>
+            </div>
+            <div class="chat-box-messages" id="chat-box-messages"></div>
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-button">Send</button>
+          </div>
     </div>
 
     <script src="manual.js"></script>

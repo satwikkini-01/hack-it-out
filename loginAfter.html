@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Account | GeoCrisis</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/05b867acb2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="loginAftercss.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+        <a class="navbar-brand" href="home.html">GeoCrisis</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="healthcare.html">Emergency</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="predmain" href="#">Predictions</a>
+                    <ul class="dropdown" id="submain">
+                        <li><a class="nav-pred" href="predictions.html"> Earthquake Prediction</a></li>
+                        <li><a class="nav-pred" href="flood.html"> Flood Prediction</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="manual.html">Manual</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-button" href="#">UserName</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <h1>GeoCrisis</h1>
+        <h2> Get Real-time Notification</h2>
+        <p>GeoCrisis is an innovative and comprehensive real-time mapping application designed to provide immediate and accurate visualization of crises and emergencies worldwide.</p>
+    </header>
+    <div class="container">
+        <input type="checkbox" id="check">
+        <label for="check" class="button-2"></label>
+        <h4> Turn ON Notification</h4>
+    </div>
+    
+    <section id="input-section">
+        <div class="input-group">
+            <label for="location-input">Enter your email address:</label>
+            <input type="text" id="location-input" placeholder="example123@gmail.com">
+            
+        </div>
+        <div>  
+            <button id="predict-button">Send Alerts</button>
+        </div>
+        
+    </section>
+    
+    <!---Chatbot-->
+    <div class="chat-circle">
+        <i class="fa-solid fa-comments fa-2x" style="color: #ffffff;"></i>
+    </div>
+
+    <div class="chat-box">
+        <div class="chat-box-header">
+            <span>Chat with AI</span>
+            <button class="close-button"><i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i></button>
+        </div>
+        <div class="chat-box-messages" id="chat-box-messages"></div>
+        <div class="user-input-area">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-button"><i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i></button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        
+
+        //Chatbot:
+
+        const chatCircle = document.querySelector('.chat-circle');
+        const chatBox = document.querySelector('.chat-box');
+        const closeButton = document.querySelector('.close-button');
+        const chatBoxMessages = document.getElementById('chat-box-messages');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        chatCircle.addEventListener('click', () => {
+            chatCircle.style.display = 'none';
+            chatBox.style.right = '20px';
+            chatBoxHeader.style.display = 'flex';
+            chatBoxMessages.style.display = 'block';
+        });
+
+        closeButton.addEventListener('click', () => {
+            chatCircle.style.display = 'flex';
+            chatBox.style.right = '-320px';
+            chatBoxHeader.style.display = 'none';
+            chatBoxMessages.style.display = 'none';
+        });
+
+        function sendMessage(message) {
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.innerHTML = message;
+            chatBoxMessages.appendChild(userMessage);
+        }
+
+        function receiveMessage(message) {
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot-message';
+            botMessage.innerHTML = message;
+            chatBoxMessages.appendChild(botMessage);
+        }
+
+        function sendUserMessage() {
+            const message = userInput.value;
+            if (message.trim() !== '') {
+                sendMessage(message);
+                scrollToBottom();
+                setTimeout(() => {
+                    receiveMessage("This is a bot response.");
+                    scrollToBottom();
+                }, 1000);
+                userInput.value = '';
+            }
+        }
+
+        sendButton.addEventListener('click', () => {
+            sendUserMessage();
+        });
+
+        userInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                sendUserMessage();
+            }
+        });
+
+        function scrollToBottom() {
+            chatBoxMessages.scrollTop = chatBoxMessages.scrollHeight;
+        }
+    </script>
+</body>
+
+</html>

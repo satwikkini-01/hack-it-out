@@ -33,13 +33,17 @@ const userInput = document.getElementById('user-input');
 const sendButton = document.getElementById('send-button');
 
 chatCircle.addEventListener('click', () => {
+  chatCircle.style.display = 'none';
   chatBox.style.right = '20px';
-  chatBox.querySelector('.chat-box-header').style.display = 'block';
-  chatBox.querySelector('.chat-box-messages').style.display = 'block';
+  chatBoxHeader.style.display = 'flex';
+  chatBoxMessages.style.display = 'block';
 });
 
 closeButton.addEventListener('click', () => {
-  chatBox.style.right = '-300px';
+  chatCircle.style.display = 'flex';
+  chatBox.style.right = '-320px';
+  chatBoxHeader.style.display = 'none';
+  chatBoxMessages.style.display = 'none';
 });
 
 function sendMessage(message) {
@@ -56,14 +60,31 @@ function receiveMessage(message) {
   chatBoxMessages.appendChild(botMessage);
 }
 
-sendButton.addEventListener('click', () => {
+function sendUserMessage() {
   const message = userInput.value;
   if (message.trim() !== '') {
     sendMessage(message);
+    scrollToBottom();
     setTimeout(() => {
       receiveMessage("This is a bot response.");
+      scrollToBottom();
     }, 1000);
     userInput.value = '';
   }
+}
+
+sendButton.addEventListener('click', () => {
+  sendUserMessage();
 });
+
+userInput.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    sendUserMessage();
+  }
+});
+
+function scrollToBottom() {
+  chatBoxMessages.scrollTop = chatBoxMessages.scrollHeight;
+}
+
 

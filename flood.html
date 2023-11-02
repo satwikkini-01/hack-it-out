@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="predictionscss.css">
+    <script src="https://kit.fontawesome.com/05b867acb2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -73,11 +74,13 @@
     <div class="chat-box">
         <div class="chat-box-header">
             <span>Chat with AI</span>
-            <button class="close-button">X</button>
+            <button class="close-button"><i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i></button>
         </div>
         <div class="chat-box-messages" id="chat-box-messages"></div>
-        <input type="text" id="user-input" placeholder="Type a message...">
-        <button id="send-button">Send</button>
+        <div class="user-input-area">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-button"><i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i></button>
+        </div>
     </div>
 
     <script>
@@ -126,13 +129,17 @@
         const sendButton = document.getElementById('send-button');
 
         chatCircle.addEventListener('click', () => {
+            chatCircle.style.display = 'none';
             chatBox.style.right = '20px';
-            chatBox.querySelector('.chat-box-header').style.display = 'block';
-            chatBox.querySelector('.chat-box-messages').style.display = 'block';
+            chatBoxHeader.style.display = 'flex';
+            chatBoxMessages.style.display = 'block';
         });
 
         closeButton.addEventListener('click', () => {
-            chatBox.style.right = '-300px';
+            chatCircle.style.display = 'flex';
+            chatBox.style.right = '-320px';
+            chatBoxHeader.style.display = 'none';
+            chatBoxMessages.style.display = 'none';
         });
 
         function sendMessage(message) {
@@ -149,16 +156,32 @@
             chatBoxMessages.appendChild(botMessage);
         }
 
-        sendButton.addEventListener('click', () => {
+        function sendUserMessage() {
             const message = userInput.value;
             if (message.trim() !== '') {
                 sendMessage(message);
+                scrollToBottom();
                 setTimeout(() => {
                     receiveMessage("This is a bot response.");
+                    scrollToBottom();
                 }, 1000);
                 userInput.value = '';
             }
+        }
+
+        sendButton.addEventListener('click', () => {
+            sendUserMessage();
         });
+
+        userInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                sendUserMessage();
+            }
+        });
+
+        function scrollToBottom() {
+            chatBoxMessages.scrollTop = chatBoxMessages.scrollHeight;
+        }
 
     </script>
 </body>

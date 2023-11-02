@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://kit.fontawesome.com/05b867acb2.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="healthcare.css">
 </head>
@@ -70,17 +71,19 @@
     <!---Chatbot-->
     <div class="chat-circle">
         <i class="fa-solid fa-comments fa-2x" style="color: #ffffff;"></i>
-      </div>
-      
-      <div class="chat-box">
+    </div>
+
+    <div class="chat-box">
         <div class="chat-box-header">
-          <span>Chat with AI</span>
-          <button class="close-button">X</button>
+            <span>Chat with AI</span>
+            <button class="close-button"><i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i></button>
         </div>
         <div class="chat-box-messages" id="chat-box-messages"></div>
-        <input type="text" id="user-input" placeholder="Type a message...">
-        <button id="send-button">Send</button>
-      </div>
+        <div class="user-input-area">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-button"><i class="fa-solid fa-paper-plane" style="color: #ffffff;"></i></button>
+        </div>
+    </div>
 
     <script type='text/javascript' src='config.js'></script>
     <script src="healthcare.js"></script>

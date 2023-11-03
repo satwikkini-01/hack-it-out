@@ -165,6 +165,14 @@ h4 {
     margin-bottom: 20px;
 }
 
+.navbar-toggler{
+    outline: none;
+}
+
+.navbar-toggler-icon{
+    color: var(--main2);
+}
+
 /* Chatbot */
 
 .chat-circle {

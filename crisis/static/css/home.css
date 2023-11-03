@@ -87,6 +87,14 @@ html {
     color: var(--main1);
 }
 
+.navbar-toggler{
+    outline: none;
+}
+
+.navbar-toggler-icon{
+    color: var(--main2);
+}
+
 #map {
     position: absolute;
     top: 56px;

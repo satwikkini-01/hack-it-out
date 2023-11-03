@@ -34,13 +34,14 @@
       {
         "tag": "items",
         "patterns": [
-          "Which items do you have?",
-          "What kinds of items are there?",
-          "What do you sell?"
+          "What can you do?",
+          "Things you can do?",
+          "What do you do?"
         ],
         "responses": [
-          "We sell coffee and tea",
-          "We have coffee and tea"
+          "Ask me about any disasters and I will explain.",
+          "Ask me anything about Natural Disasters.",
+          "Try asking 'What is a Flood?' or 'What causes volcano?'"
         ]
       },
       {

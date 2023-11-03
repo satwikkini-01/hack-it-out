@@ -9,7 +9,7 @@ from torch.utils.data import Dataset, DataLoader
 from utils import bag_of_words, tokenize, stem
 from registrar.model import NeuralNet
 
-with open('/Users/satwik/Documents/GitHub/hack-it-out/Chatbot/intents.json', 'r') as f:
+with open('registrar/intents.json', 'r') as f:
     intents = json.load(f)
 
 all_words = []

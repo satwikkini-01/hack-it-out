@@ -55,13 +55,23 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True  # Allow requests from all origins (for development only)
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000"
+]
+
 CORS_ALLOW_METHODS = (
-    'GET',  # Add other HTTP methods as needed
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
 )
 
 CORS_ALLOW_HEADERS = (

@@ -60,7 +60,7 @@
             
         </div>
         <div>  
-            <button id="predict-button">Send Alerts</button>
+            <button id="predict-button" onclick="subscribe()">Send Alerts</button>
         </div>
         <div class="margin-button"></div>
         <div>  
@@ -98,6 +98,19 @@
             const emailInput = document.getElementById("location-input");
             const isSubscribed = checkBox.checked;
             const email = emailInput.value;
+
+
+            if(isSubscribed){
+                if(email){
+                    alert("You are subscribed");
+                }
+                else{
+                    alert("Email field can't be empty");
+                }
+            }
+            else{
+                alert("Please switch on for notifications");
+            }
 
             // Create JSON data
             const data = {

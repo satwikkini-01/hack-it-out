@@ -140,6 +140,8 @@ APIs: USGS, NASA EONET, Leaflet, OpenStreetMap
 
 <img width="1440" alt="Screenshot 2023-11-03 at 1 49 50 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/a8061c98-5882-4285-a795-d85e1aa1dcd5">
 
+<img width="1440" alt="Screenshot 2023-11-03 at 10 47 58 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/500f5781-f07c-4e4c-8e3a-548b54bba223">
+
 <img width="1440" alt="Screenshot 2023-11-03 at 7 11 43 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/074652f6-cf89-4b03-ab1c-18485ed9cdaf">
 
 <img width="1157" alt="Screenshot-4" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/fc9b9b9d-a8ca-4e5f-874c-15e773888cd4">

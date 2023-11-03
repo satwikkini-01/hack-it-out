@@ -92,6 +92,36 @@
         function logout() {
             window.location.href = "{% url 'logout' %}";
         }
+        
+        function subscribe() {
+            const checkBox = document.getElementById("check");
+            const emailInput = document.getElementById("location-input");
+            const isSubscribed = checkBox.checked;
+            const email = emailInput.value;
+
+            // Create JSON data
+            const data = {
+                subscribe: isSubscribed,
+            };
+
+            // Send a POST request to the server
+            fetch("http://127.0.0.1:8000/accounts/subscribe/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Handle the response, e.g., show a success message to the user
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                // Handle errors, e.g., display an error message
+            });
+        }
 
         //Chatbot:
 

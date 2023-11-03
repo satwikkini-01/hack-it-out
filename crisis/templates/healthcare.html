@@ -16,7 +16,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
-        <a class="navbar-brand" href="home.html">GeoCrisis</a>
+        <a class="navbar-brand" href="{% url 'home' %}">GeoCrisis</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
@@ -24,20 +24,20 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Emergency</a>
+                    <a class="nav-link" href="{% url 'health' %}">Emergency</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="predmain" href="#">Predictions</a>
                     <ul class="dropdown" id="submain">
-                        <li><a class="nav-pred" href="{% url "predictions" %}"> Earthquake Prediction</a></li>
+                        <li><a class="nav-pred" href="{% url 'predictions' %}"> Earthquake Prediction</a></li>
                         <li><a class="nav-pred" href="{% url 'flood' %}"> Flood Prediction</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="manual.html">Manual</a>
+                    <a class="nav-link" href="{% url 'manual' %}">Manual</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-button" href="#">LogIn</a>
+                    <a class="nav-link nav-button" href="{% url 'login' %}">LogIn</a>
                 </li>
             </ul>
         </div>

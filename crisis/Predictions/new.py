@@ -19,17 +19,17 @@ data = data[['Date', 'Time', 'Latitude', 'Longitude', 'Depth', 'Magnitude']]
 import datetime
 import time
 
-# timestamp = []
-# for d, t in zip(data['Date'], data['Time']):
-#     try:
-#         ts = datetime.datetime.strptime(d+' '+t, '%m/%d/%Y %H:%M:%S')
-#         timestamp.append(time.mktime(ts.timetuple()))
-#     except ValueError:
-#         # print('ValueError')
-#         timestamp.append('ValueError')
+timestamp = []
+for d, t in zip(data['Date'], data['Time']):
+    try:
+        ts = datetime.datetime.strptime(d + ' ' + t, '%m/%d/%Y %H:%M:%S')
+        timestamp.append(ts.timestamp())
+    except ValueError:
+        # print('ValueError')
+        timestamp.append('ValueError')
 
-# timeStamp = pd.Series(timestamp)
-# data['Timestamp'] = timeStamp.values
+timeStamp = pd.Series(timestamp)
+data['Timestamp'] = timeStamp.values
 final_data = data.drop(['Date', 'Time'], axis=1)
 final_data = final_data[final_data.Timestamp != 'ValueError']
 #print(final_data.head())

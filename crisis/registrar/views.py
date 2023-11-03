@@ -1,4 +1,5 @@
 # accounts/views.py
+import time
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -119,3 +120,26 @@ def manual(request):
 
 def home(request):
     return render(request,'home.html')
+
+class get_all_user(APIView):
+    def get(self,request):
+        users = CustomUser.objects.all()
+        toNotify = []
+        if users:
+            for user in users:
+                if user.to_notification:
+                    if user.longitude and user.latitude:
+                        if user.last_notified:
+                            if int(time.time()) - user.last_notified > 12 * 60 * 60:
+                                toNotify.append({'identifier':user.email,'latitude':user.latitude,'longitude':user.longitude})
+                        else:
+                            toNotify.append({'identifier':user.email,'latitude':user.latitude,'longitude':user.longitude})
+            return JsonResponse({'users':toNotify})
+
+class notify(APIView):
+    def post(self,request):
+        user = request.data.get("user")
+        usernotified = CustomUser.objects.get(email = user)
+        usernotified.last_notified = int(time.time())
+        usernotified.save()
+        return JsonResponse({'result':'success'})

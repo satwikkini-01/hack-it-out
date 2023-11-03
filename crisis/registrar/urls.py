@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('predict/quake',views.Earthquake.as_view(),name='quakepredict'),
     path('predict/flood',views.Flood.as_view(),name='floodpredict'),
-    
+    path('getuser/',views.get_all_user.as_view(),name='backend-notifier'),
+    path('onNotify/',views.notify.as_view(),name='backend-notified'),
 ]

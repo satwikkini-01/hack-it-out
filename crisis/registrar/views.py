@@ -143,8 +143,9 @@ class notify(APIView):
         usernotified.save()
         return JsonResponse({'result':'success'})
 
-@login_required
+
 class startNotify(APIView):
+    
     def post(request):
         if request.method == 'POST':
             user = request.user 

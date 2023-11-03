@@ -132,7 +132,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const message = data.message;
-                    probability.textContent = (message * 10).toFixed(2);
+                    probability.textContent = (message * 10).toFixed(2) + " %";
                     if(message > 5){
                         description.textContent = "These is a high chance of Flood in your location.";
                     }

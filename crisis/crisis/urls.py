@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
-from registrar.views import predictions,home,flood_predict,health,manual
+from registrar.views import predictions,home,flood_predict,health,manual,alerts
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +27,6 @@ urlpatterns = [
     path('',home),
     path('healthcare/', health, name='health'),
     path('manual/', manual, name='manual'),
+    path('alerts/', alerts, name='alerts'),
 
 ]

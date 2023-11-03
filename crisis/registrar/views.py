@@ -78,6 +78,8 @@ def predictions(request):
 def flood_predict(request):
     return render(request,'flood.html')
 
+def alerts(request):
+    return render(request, 'alerts.html')
 
 def health(request):
     return render(request,'healthcare.html')

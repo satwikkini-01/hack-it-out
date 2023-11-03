@@ -13,7 +13,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
-        <a class="navbar-brand" href="home.html">GeoCrisis</a>
+        <a class="navbar-brand" href="{% url 'home' %}">GeoCrisis</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
@@ -21,20 +21,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="healthcare.html">Emergency</a>
+                    <a class="nav-link" href="{% url 'health' %}">Emergency</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="predmain" href="#">Predictions</a>
                     <ul class="dropdown" id="submain">
-                        <li><a class="nav-pred" href="predictions.html"> Earthquake Prediction</a></li>
-                        <li><a class="nav-pred" href="flood.html"> Flood Prediction</a></li>
+                        <li><a class="nav-pred" href="{% url 'earthquake_prediction' %}"> Earthquake Prediction</a></li>
+                        <li><a class="nav-pred" href="{% url 'flood_prediction' %}"> Flood Prediction</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="manual.html">Manual</a>
+                    <a class="nav-link" href="{% url 'manual' %}">Manual</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-button" href="#">UserName</a>
+                    {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'alerts' %}">Alerts</a>
+                    {% else %}
+                        <a class="nav-link nav-button" href="{% url 'login' %}">Log In</a>
+                    {% endif %}
                 </li>
             </ul>
         </div>

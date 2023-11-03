@@ -1,5 +1,6 @@
 import pandas as pd
-# import numpy as np
+import numpy as np
+from django.utils import timezone
 # from matplotlib import pyplot as plt
 # from sklearn.preprocessing import PolynomialFeatures
 # from sklearn.linear_model import LinearRegression
@@ -17,13 +18,15 @@ backup = data.copy()
 data = data[['Date', 'Time', 'Latitude', 'Longitude', 'Depth', 'Magnitude']]
 
 import datetime
+from datetime import datetime
 import time
 
 timestamp = []
 for d, t in zip(data['Date'], data['Time']):
     try:
-        ts = datetime.datetime.strptime(d + ' ' + t, '%m/%d/%Y %H:%M:%S')
-        timestamp.append(ts.timestamp())
+        ts = datetime.strptime(d + ' ' + t, '%m/%d/%Y %H:%M:%S')
+        ts = timezone.make_aware(ts, timezone.get_current_timezone())  # Make ts offset-aware
+        timestamp.append(int(ts.timestamp()))
     except ValueError:
         # print('ValueError')
         timestamp.append('ValueError')

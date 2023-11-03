@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     # Custom apps
     'registrar',
     'corsheaders',
-    'Predictions'
+    'rest_framework',
+    # 'Predictions'
 ]
 
 MIDDLEWARE = [

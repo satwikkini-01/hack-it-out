@@ -5,8 +5,9 @@ from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from Predictions.new import quake_predict
-from Predictions.flood import flood_predict
+from rest_framework.views import APIView
+# from Predictions.new import quake_predict
+# from Predictions.flood import flood_predict
 
 from .chat import get_response
 
@@ -36,37 +37,37 @@ def custom_login(request):
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
 
-@csrf_exempt
-def getResponse(request):
-    userMessage = request.GET.get('IPMessage')
-    chat_ans = str(get_response(str(userMessage)))
-    message = {
-        'message':chat_ans
-    }
-    print(message)
-    return JsonResponse(message)
+class Chatbot(APIView):
+    def get(self,request):
+        userMessage = request.GET.get('IPmessage')
+        chat_ans = str(get_response(str(userMessage)))
+        message = {
+            'message':chat_ans
+        }
+        print(message)
+        return JsonResponse(message)
 
-@csrf_exempt
-def quakePredict(request):
-    latitude = request.GET.get('latitude')
-    longitude = request.GET.get('longitude')
-    response = quake_predict(latitude,longitude)
-    message = {
-        'message':response
-    }
-    print(message)
-    return JsonResponse(message)
+# @csrf_exempt
+# def quakePredict(request):
+#     latitude = request.GET.get('latitude')
+#     longitude = request.GET.get('longitude')
+#     response = quake_predict(latitude,longitude)
+#     message = {
+#         'message':response
+#     }
+#     print(message)
+#     return JsonResponse(message)
 
-@csrf_exempt
-def floodPredict(request):
-    latitude = request.GET.get('latitude')
-    longitude = request.GET.get('longitude')
-    response = flood_predict(latitude,longitude)
-    message = {
-        'message':response
-    }
-    print(message)
-    return JsonResponse(message)
+# # @csrf_exempt
+# # def floodPredict(request):
+# #     latitude = request.GET.get('latitude')
+# #     longitude = request.GET.get('longitude')
+# #     response = flood_predict(latitude,longitude)
+# #     message = {
+# #         'message':response
+# #     }
+# #     print(message)
+# #     return JsonResponse(message)
 
 def home(request):
     return render(request,'home.html')

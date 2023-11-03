@@ -156,9 +156,11 @@ APIs: USGS, NASA EONET, Leaflet, OpenStreetMap
 
 <img width="1159" alt="Screenshot-7" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/9a1c49a4-4acd-4fc2-9edb-445a1185f812">
 
-![IMG_6475](https://github.com/satwikkini-01/hack-it-out/assets/144726232/f3ad0fae-c79a-4ac7-b1c8-49f15a878505)
-![IMG_6476](https://github.com/satwikkini-01/hack-it-out/assets/144726232/ca394cc5-ff43-4206-a937-b8912c77cc09)
-![IMG_6477](https://github.com/satwikkini-01/hack-it-out/assets/144726232/5921e43d-1f1b-4d7d-b4d3-78b9aa06d565)
+<img width="200" alt="Screenshot-8" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/f3ad0fae-c79a-4ac7-b1c8-49f15a878505">
+
+<img width="200" alt="Screenshot-9" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/ca394cc5-ff43-4206-a937-b8912c77cc09">
+
+<img width="200" alt="Screenshot-10" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/5921e43d-1f1b-4d7d-b4d3-78b9aa06d565">
 
 
 ## The Team:

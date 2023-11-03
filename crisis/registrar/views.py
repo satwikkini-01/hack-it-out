@@ -11,7 +11,7 @@ from registrar.models import CustomUser
 from django.contrib import messages
 import traceback 
 from Predictions.new import quake_predict
-# from Predictions.flood import flood_predict
+from Predictions.flood import floodP
 
 from .chat import get_response
 
@@ -88,16 +88,16 @@ class Earthquake(APIView):
         print(message)
         return JsonResponse(message)
 
-@csrf_exempt
-def floodPredict(request):
-    latitude = request.GET.get('latitude')
-    longitude = request.GET.get('longitude')
-    response = flood_predict(latitude,longitude)
-    message = {
-        'message':response
-    }
-    print(message)
-    return JsonResponse(message)
+class Flood(APIView):
+    def get(self,request):
+        rain12 = float(request.GET.get('rainfall'))
+        print(rain12)
+        response = floodP(rain12)
+        message = {
+            'message':response
+        }
+        print(message)
+        return JsonResponse(message)
 
 def home(request):
     return render(request,'home.html')

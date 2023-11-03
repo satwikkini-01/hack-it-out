@@ -8,6 +8,6 @@ urlpatterns = [
     path('getResponse/',views.Chatbot.as_view(),name='getResponse'),
     path('logout/', views.logout_view, name='logout'),
     path('predict/quake',views.Earthquake.as_view(),name='quakepredict'),
-    # path('predict/flood',views.getResponse,name='floodpredict'),
+    path('predict/flood',views.Flood.as_view(),name='floodpredict'),
     
 ]

@@ -46,20 +46,25 @@ regressor = LinearRegression()
 regressor.fit(X_train, y_train) 
 y_pred = regressor.predict(X_test) 
 
-rainfall = [[250]]
 
-predLvl = regressor.predict(rainfall)
-# print(predLvl)
 
-if(predLvl > 5):
-  print("These is a high chance of Flood in your location.")
-elif(predLvl > 3.5):
-  print("There is a good chance of Flood in your location.")
-elif(predLvl > 1.5):
-  print("There is a mild chance of Flood in your location.")
-else:
-  print("There is nearly no chance of Flood in your location.")
+# rainfall = [[250]]
 
-def flood_predict():
-  message = ""
-  return message
+# predLvl = (regressor.predict([[34]]))
+# pred12 = float(predLvl[0][0])
+# print(pred12)
+
+# if(predLvl > 5):
+#   print("These is a high chance of Flood in your location.")
+# elif(predLvl > 3.5):
+#   print("There is a good chance of Flood in your location.")
+# elif(predLvl > 1.5):
+#   print("There is a mild chance of Flood in your location.")
+# else:
+#   print("There is nearly no chance of Flood in your location.")
+
+def floodP(rain):
+    message = (regressor.predict([[rain]]))
+    res = float(message[0][0])
+    return res
+

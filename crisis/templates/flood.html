@@ -62,7 +62,7 @@
         <div class="result-box">
             <h2>Prediction Results</h2>
             <p><strong>Predicted Flood Probability:</strong> <span id="probability">-</span></p>
-            <p><strong>Location:</strong> <span id="location">-</span></p>
+            <p><strong>Location:</strong> <span id="location_place">-</span></p>
             <p><strong>Description:</strong> <span id="description">-</span></p>
         </div>
     </section>
@@ -95,6 +95,8 @@
         // You will need to integrate your machine learning model and API here
 
         let address;
+        let userLatitude;
+        let userLongitude;
         function getUserLocation() {
             navigator.geolocation.getCurrentPosition(async (position) => {
                 userLatitude = position.coords.latitude;
@@ -106,6 +108,7 @@
                         if (data.display_name) {
                             address = data.display_name;
                             console.log('Location:', address);
+                            location_place.textContent = address;
                         } else {
                             console.error('Location not found');
                         }
@@ -118,19 +121,30 @@
             });
 
         }
-        getUserLocation();
+        
         const locationjs = document.getElementById("location")
         const predict = document.getElementById("predict-button")
         predict.addEventListener("click", function () {
-            const loc = address;  // Replace with your logic to get the latitude and longitude
-            const latitude =  // Calculate or fetch the latitude here
-            const longitude =  // Calculate or fetch the longitude here
-            
-            fetch(`http://127.0.0.1/predict/flood?latitude=${latitude}&longitude=${longitude}`)
+            getUserLocation();
+            const rainfall = document.getElementById("rainfall-input").value;
+            console.log(rainfall);
+            fetch(`http://127.0.0.1:8000/accounts/predict/flood?rainfall=${rainfall}`)
                 .then(response => response.json())
                 .then(data => {
                     const message = data.message;
-                    description.textContent = message;
+                    probability.textContent = (message * 10).toFixed(2);
+                    if(message > 5){
+                        description.textContent = "These is a high chance of Flood in your location.";
+                    }
+                    else if(message > 3.5){
+                        description.textContent = "There is a good chance of Flood in your location.";
+                    }
+                    else if(message > 1.5){
+                        description.textContent = "There is a mild chance of Flood in your location.";
+                    }
+                    else{
+                        description.textContent = "There is nearly no chance of Flood in your location.";
+                    }
                 })
                 .catch(error => {
                     console.error('Error:', error);

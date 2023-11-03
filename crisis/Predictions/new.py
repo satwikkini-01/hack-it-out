@@ -50,6 +50,7 @@ def quake_predict(lat,long):
     ans = reg.predict([[t,lat,long]])
     return ans[0][0]
 ''' Format Below'''
+
 ## reg.predict([[timestamp,lat,long]]) ##
 
 

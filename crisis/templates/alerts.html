@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/05b867acb2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'css/loginAfter.css' %}">
+    <link rel="stylesheet" href="{% static 'css/alerts.css' %}">
 </head>
 
 <body>
@@ -44,7 +44,6 @@
         </div>
     </nav>
     <header>
-        <h1>GeoCrisis</h1>
         <h2> Get Real-time Notification</h2>
         <p>GeoCrisis is an innovative and comprehensive real-time mapping application designed to provide immediate and accurate visualization of crises and emergencies worldwide.</p>
     </header>
@@ -62,6 +61,10 @@
         </div>
         <div>  
             <button id="predict-button">Send Alerts</button>
+        </div>
+        <div class="margin-button"></div>
+        <div>  
+            <button id="predict-button" onclick="logout()">LOGOUT</button>
         </div>
         
     </section>
@@ -86,7 +89,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        
+        function logout() {
+            window.location.href = "{% url 'logout' %}";
+        }
 
         //Chatbot:
 

@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,27 @@
   <title>Sign Up | GeoCrisis</title>
   <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
+
 <body>
   <div class="container">
     <form id="signup-form" class="form" method="post">
       {% csrf_token %}
-      <!-- {{ form.as_p }} -->
       <h2>SIGN UP</h2>
-      <input type="text" placeholder="First name" required>
-      <input type="text" placeholder="Last name" required>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Password" required>
+      <input type="text" placeholder="First name" name="fname" required>
+      <input type="text" placeholder="Last name" name="lname" required>
+      <input type="email" placeholder="Email" name="email" required>
+      <input type="password" placeholder="Password" name="password" required>
       <button type="submit">Sign Up</button>
     </form>
     <p>Already have an account? <a href="{% url 'login' %}">Log In</a></p>
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
   </div>
 </body>
-</html>
 
+</html>

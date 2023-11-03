@@ -16,11 +16,18 @@
       {% csrf_token %}
       <!-- {{ form.as_p }} -->
       <h2>LOG IN</h2>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Password" required>
+      <input type="email" placeholder="Email" name="email" required>
+      <input type="password" placeholder="Password" name="password" required>
       <button type="submit">LogIn</button>
     </form>
     <p>Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
   </div>
 </body>
 

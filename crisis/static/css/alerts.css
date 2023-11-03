@@ -171,6 +171,10 @@ label {
     transition: all 0.3s ease;
 }
 
+.margin-button{
+    height: 2rem;
+}
+
 #predict-button:hover {
     transform: scale(1.1);
 }

@@ -1,10 +1,27 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
+  <title>Sign Up | GeoCrisis</title>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+  <div class="container">
+    <form id="signup-form" class="form" method="post">
+      {% csrf_token %}
+      <!-- {{ form.as_p }} -->
+      <h2>SIGN UP</h2>
+      <input type="text" placeholder="First name" required>
+      <input type="text" placeholder="Last name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Log In</a></p>
+  </div>
+</body>
+</html>
 
-{% block content %}
-  <h2>Register</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-  </form>
-{% endblock %}

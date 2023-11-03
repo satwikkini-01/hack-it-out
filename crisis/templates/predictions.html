@@ -116,8 +116,8 @@
         predict.addEventListener("click", function () {
             getLocation();
             const loc = address;  // Replace with your logic to get the latitude and longitude
-            const latitude =  // Calculate or fetch the latitude here
-            const longitude =  // Calculate or fetch the longitude here
+            const latitude = latitude_pred; // Calculate or fetch the latitude here
+            const longitude = longitude_pred; // Calculate or fetch the longitude here
             
             fetch(`http://127.0.0.1/predict/quake?latitude=${latitude}&longitude=${longitude}`)
                 .then(response => response.json())

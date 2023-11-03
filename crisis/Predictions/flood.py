@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 # %matplotlib inline
 
-df_rain = pd.read_csv("rainfall.csv")
+df_rain = pd.read_csv("Predictions/rainfall.csv")
 # print(df_rain.head())
 
 df_rain.plot(x='Date/Time', y='Cumulative rainfall (mm)', style='o')  
@@ -16,7 +16,7 @@ df_rain.plot(x='Date/Time', y='Cumulative rainfall (mm)', style='o')
 # plt.ylabel('Rainfall in mm')  
 # plt.show()  
 
-df_river = pd.read_csv("river.csv")
+df_river = pd.read_csv("Predictions/river.csv")
 
 # df_river.plot(x='Date/Time', y='Level (m)', style='o')  
 # plt.title('River Level')  

@@ -43,8 +43,11 @@ reg = RandomForestRegressor(random_state=43)
 reg.fit(X_train, y_train)
 reg.predict(X_test)
 
+t = int(time.time())
+
 def quake_predict(lat,long):
-    return reg.predict([[int(time.time()),lat,long]])
+    ans = reg.predict([[t,lat,long]])
+    return ans[0][0]
 ''' Format Below'''
 ## reg.predict([[timestamp,lat,long]]) ##
 

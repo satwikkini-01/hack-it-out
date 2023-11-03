@@ -1,5 +1,6 @@
 import numpy as np
 import nltk
+# nltk.download()
 from nltk.stem.porter import PorterStemmer
 stemmer = PorterStemmer()
 

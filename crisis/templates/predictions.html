@@ -90,7 +90,7 @@
     <script>
         
 
-        let latitude_pred;
+        var latitude_pred;
         let longitude_pred;
         function getLocation() {
             const city = document.getElementById('location-input').value;
@@ -103,6 +103,26 @@
                             latitude_pred = location.lat;
                             longitude_pred = location.lon;
                             getUserLocation();
+                            const loc = address;  // Replace with your logic to get the latitude and longitude
+                            const latitude12 = latitude_pred; // Calculate or fetch the latitude here
+                            const longitude12 = longitude_pred; // Calculate or fetch the longitude here
+                            fetch(`http://127.0.0.1:8000/accounts/predict/quake?latitude=${latitude12}&longitude=${longitude12}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    const message = data.message;
+                                    if(message > 6.3){
+                                        probability.textContent = (message*8.2).toFixed(2);
+                                        description.textContent = "There might be a chance of Earthquake in the future";
+                                    }
+                                    else{
+                                        probability.textContent = (message*6.5).toFixed(2);
+                                        description.textContent = "There is a very less chance of Earthquake in the future";
+                                    }
+                                    
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                });
                             
                         } else {
                             alert('City not found. Please try again.');
@@ -114,24 +134,11 @@
 
         }
         
-        
         const locationjs = document.getElementById("location")
         const predict = document.getElementById("predict-button")
         predict.addEventListener("click", function () {
             getLocation();
-            const loc = address;  // Replace with your logic to get the latitude and longitude
-            const latitude = latitude_pred; // Calculate or fetch the latitude here
-            const longitude = longitude_pred; // Calculate or fetch the longitude here
             
-            fetch(`http://127.0.0.1/predict/quake?latitude=${latitude}&longitude=${longitude}`)
-                .then(response => response.json())
-                .then(data => {
-                    const message = data.message;
-                    description.textContent = message;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
         });
         
         let address;

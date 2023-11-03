@@ -140,9 +140,15 @@ APIs: USGS, NASA EONET, Leaflet, OpenStreetMap
 
 <img width="1440" alt="Screenshot 2023-11-03 at 1 49 50 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/a8061c98-5882-4285-a795-d85e1aa1dcd5">
 
+<img width="1440" alt="Screenshot 2023-11-03 at 7 11 43 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/074652f6-cf89-4b03-ab1c-18485ed9cdaf">
+
 <img width="1157" alt="Screenshot-4" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/fc9b9b9d-a8ca-4e5f-874c-15e773888cd4">
 
+<img width="1440" alt="Screenshot 2023-11-03 at 2 49 07 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/855c46ce-76d1-4951-88b3-9bf172921c15">
+
 <img width="1160" alt="Screenshot-5" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/1e141ab0-bffa-443d-856d-e49d594a7198">
+
+<img width="1440" alt="Screenshot 2023-11-03 at 6 03 33 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/98c1d4ac-c973-4527-9dbb-18bc1fa983f1">
 
 <img width="1158" alt="Screenshot-6" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/9f848d82-5b05-4703-887a-206d1703a644">
 

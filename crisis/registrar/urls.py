@@ -11,4 +11,5 @@ urlpatterns = [
     path('predict/flood',views.Flood.as_view(),name='floodpredict'),
     path('getuser/',views.get_all_user.as_view(),name='backend-notifier'),
     path('onNotify/',views.notify.as_view(),name='backend-notified'),
+    path('subscribe/',views.startNotify.as_view(),name='backend-subscribe'),
 ]

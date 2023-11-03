@@ -14,8 +14,6 @@ sender_email = 'your_email@gmail.com'
 recipient_email = 'recipient@example.com'
 password = 'your_password'
 
-message = MIMEText("This is a test email sent via Gmail SMTP.")
-
 
 # Create a new agent named "disaster_alert"
 disaster_alert_agent = Agent(name="disaster_alert")

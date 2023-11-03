@@ -1,5 +1,6 @@
 # accounts/views.py
 import time
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -109,6 +110,7 @@ def predictions(request):
 def flood_predict(request):
     return render(request,'flood.html')
 
+@login_required
 def alerts(request):
     return render(request, 'alerts.html')
 
@@ -117,9 +119,6 @@ def health(request):
 
 def manual(request):
     return render(request,'manual.html')
-
-def home(request):
-    return render(request,'home.html')
 
 class get_all_user(APIView):
     def get(self,request):
@@ -143,3 +142,17 @@ class notify(APIView):
         usernotified.last_notified = int(time.time())
         usernotified.save()
         return JsonResponse({'result':'success'})
+
+@login_required
+class startNotify(APIView):
+    def post(request):
+        if request.method == 'POST':
+            user = request.user 
+            if request.data.get("subscribe"):
+                userPro = CustomUser.objects.get(user = user)
+                userPro.to_notification = True
+                userPro.save() 
+
+            return JsonResponse({'message': 'Last notified time updated successfully'})
+        else:
+            return JsonResponse({'message': 'Only POST requests are allowed for this view'})

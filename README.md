@@ -144,6 +144,10 @@ APIs: USGS, NASA EONET, Leaflet, OpenStreetMap
 
 <img width="1440" alt="Screenshot 2023-11-03 at 7 11 43 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/074652f6-cf89-4b03-ab1c-18485ed9cdaf">
 
+<img width="1440" alt="Screenshot 2023-11-03 at 11 16 20 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/08492ab2-443e-4aff-9b30-9191f232f11c">
+
+<img width="1440" alt="Screenshot 2023-11-03 at 11 19 01 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/8260de4e-c10c-48bf-ae7b-2c85c82b4360">
+
 <img width="1157" alt="Screenshot-4" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/fc9b9b9d-a8ca-4e5f-874c-15e773888cd4">
 
 <img width="1440" alt="Screenshot 2023-11-03 at 7 15 09 PM" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/29d5e2c1-acff-41e3-9020-eb95f942b52b">
@@ -155,6 +159,14 @@ APIs: USGS, NASA EONET, Leaflet, OpenStreetMap
 <img width="1158" alt="Screenshot-6" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/9f848d82-5b05-4703-887a-206d1703a644">
 
 <img width="1159" alt="Screenshot-7" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/9a1c49a4-4acd-4fc2-9edb-445a1185f812">
+
+<img width="200" alt="Screenshot-8" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/033d8471-cf85-43f9-bb97-4dde7565aaa0">
+
+<img width="200" alt="Screenshot-9" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/2eebc77c-a1dc-4fc6-a57a-d9dd8106db73">
+
+<img width="200" alt="Screenshot-10" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/1d8423c2-d2ce-4687-88af-7766ca752677">
+
+<img width="200" alt="Screenshot-11" src="https://github.com/satwikkini-01/hack-it-out/assets/144726232/9dcd8e63-005e-44e9-84c6-8f0054b6dcc9">
 
 ## The Team:
 
